@@ -1,6 +1,8 @@
+import AddMeal from './AddMeal';
+
 import styles from './MealItem.module.css';
 
-function MealItem({ name, description, price: rawPrice }) {
+function MealItem({ id, name, description, price: rawPrice }) {
   const price = `$${rawPrice.toFixed(2)}`;
   return (
     <li className={styles.meal}>
@@ -9,7 +11,9 @@ function MealItem({ name, description, price: rawPrice }) {
         <div className={styles.description}>{description}</div>
         <div className={styles.price}>{price}</div>
       </div>
-      <div></div>
+      <div>
+        <AddMeal id={id} />
+      </div>
     </li>
   );
 }

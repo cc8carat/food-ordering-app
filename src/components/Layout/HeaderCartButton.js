@@ -2,10 +2,10 @@ import CartIcon from '../SVG/CartIcon';
 
 import styles from './HeaderCartButton.module.css';
 
-function HeaderCartButton() {
+function HeaderCartButton({ onClick }) {
   const { button, icon, badge } = styles;
   return (
-    <button className={button}>
+    <button className={button} onClick={onClick}>
       <span className={icon}>
         <CartIcon />
       </span>
