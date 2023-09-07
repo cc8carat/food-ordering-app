@@ -9,11 +9,13 @@ function Cart({ onClose }) {
   const cartCtx = useContext(CartContext);
   const cartItems = cartCtx.items;
   const totalAmount = cartCtx.totalAmount.toFixed(2);
-  const isCartValid = cartItems.length > 1;
+  const isCartValid = cartItems.length > 0;
 
-  const addItemHandler = () => {};
+  const addItemHandler = (item) => {
+    cartCtx.addItem({ ...item, amount: 1 });
+  };
   const removeItemHandler = (id) => {
-    console.log(id);
+    cartCtx.removeItem(id);
   };
   return (
     <Modal onClose={onClose}>
@@ -24,7 +26,7 @@ function Cart({ onClose }) {
             name={item.name}
             price={item.price}
             amount={item.amount}
-            onAdd={addItemHandler.bind(item)}
+            onAdd={addItemHandler.bind(null, item)}
             onRemove={removeItemHandler.bind(null, item.id)}
           />
         ))}
